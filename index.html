@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admnistrador de tareas</title>
+    
+    <!--Estilos-->
+    <link rel="stylesheet" href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/app.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/toastr.min.css">
+    <!--Librerias javascript-->
+    <script src="js/jquery-1.11.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/toastr.min.js"></script>
+    
+    <!--Librerias AngularJs-->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-ui-router.min.js"></script>
+    <script src="js/angular-resource.min.js"></script>
+    <script src="js/angular-mocks.js"></script>
+    <script src="js/d3.js"></script>
+    <script src="js/angular-charts.js"></script>
+    <!--Librerias de la aplicacion-->
+    <script src="app/app.js"></script>
+    <script src="app/MainCtrl.js"></script>
+    <script src="app/Tareas/tareasCtrl.js"></script>
+    <script src="app/Tareas/tareaCtrl.js"></script>
+    <script src="app/Usuarios/usuariosCtrl.js"></script>
+    <script src="app/Usuarios/usuarioCtrl.js"></script>
+    <script src="app/Avatars/avatarsCtrl.js"></script>
+    <script src="app/Estadisticas/estadisticasCtrl.js"></script>
+    <!--Servicios-->
+    <script src="servicios/common.js"></script>
+    <script src="servicios/tareasResource.js"></script>
+    <script src="servicios/tareasResourceMock.js"></script>
+    <script src="servicios/usuariosResource.js"></script>
+    <script src="servicios/usuariosResourceMock.js"></script>
+    <script src="servicios/puestosResource.js"></script>
+    <script src="servicios/puestosResourceMock.js"></script>
+    <script src="servicios/avatarsResource.js"></script>
+    <script src="servicios/avatarsResourceMock.js"></script>
+    <script src="servicios/estadisticasService.js"></script>
+    
+</head>
+
+<body ng-app="AdministradordeTareas">
+    
+    
+    <!--Menu-->
+    
+    <div class="menu navbar navbar-inverse">
+       <div class="container">
+           <a ui-sref="inicio" class="navbar-brand">Administrador de Tareas</a>
+           <div class="navbar-header">
+               <button type="button" class="navbar-toggle"
+                  data-toggle="collapse"
+                  data-target=".navbar-collapse">
+                   <span class="sr-only">Toggle navigation</span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+                   <span class="icon-bar"></span>
+               </button>
+           </div>
+           <div class="navbar-collapse collapse">
+               <ul class="nav navbar-nav">
+                   <li><a ui-sref="tareas">Tareas</a></li>
+                   <li><a ui-sref="usuarios">Usuarios</a></li>
+                   <li><a ui-sref="estadisticas">Estadisticas</a></li>
+               </ul>
+           </div>
+       </div>
+        
+    </div>
+    
+    <!-- /Menu -->
+    
+    <div id="contenedor-principal" class="container">
+        <div ui-view></div>
+    </div>
+</body>
+
+</html>

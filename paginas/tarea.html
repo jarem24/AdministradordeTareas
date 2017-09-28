@@ -1,0 +1,74 @@
+<h2>Editando tarea {{ tarea.descripcion }}</h2>
+<hr>
+<form role="form" name="tareaForm"
+      novalidate>
+
+    <div class="row">
+        <div class="form-group col-md-12">
+            <label for="inputDescripcion">Descripcion:</label>
+            <input
+                    type="text"
+                    class="form-control"
+                    id="inputDescripcion"
+                    placeholder="Descripcion"
+                    ng-model="vm.tarea.descripcion"
+                    required
+                    autofocus
+                    ng-minlength="5"
+                    ng-maxlength="50">
+        </div>
+        <div class="form-group col-md-12">
+            <label for="selectPuesto">Estado:</label>
+            <select id="selectPuesto"
+                    required
+                    class="form-control"
+                    ng-model="vm.tarea.estado"
+                    ng-options="e.estado as e.estado for e in vm.estados">
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    <label for="selectUsuario">Usuario:</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    <img ng-src="{{vm.tarea.asignadoA.imagenPequena}}" />
+                </div>
+                <div class="col-md-11">
+                    <select id="selectUsuario"
+                            required
+                            class="form-control col-md-11"
+                            ng-model="vm.tarea.asignadoA"
+                            ng-options="u.nombre for u in vm.usuarios track by u.usuarioId">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-md-12">
+            <label for="selectPrioridad">Prioridad:</label>
+            <select id="selectPrioridad"
+                    required
+                    class="form-control"
+                    ng-model="vm.tarea.prioridad"
+                    ng-options="p.prioridad as p.prioridad for p in vm.prioridades">
+            </select>
+        </div>
+        <div class="form-group col-md-12">
+            <button
+                    type="button"
+                    ng-disabled="tareaForm.$invalid"
+                    ng-class="{'btn-default':tareaForm.$invalid, 'btn-info':tareaForm.$valid}"
+                    ng-click="vm.guardar(tareaForm.$valid)"
+                    class="btn">Guardar</button>
+            <button
+                    type="button"
+                    class="btn btn-danger"
+                    ng-click="vm.cancelar()">Cancelar</button>
+        </div>
+    </div>
+
+    <div ui-view></div>
+
+</form>

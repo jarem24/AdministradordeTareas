@@ -1,0 +1,66 @@
+<h1>Tareas</h1>
+
+<hr>
+
+<div class="row">
+    <div class="col-md-1">
+        <a ui-sref="tareas.tarea({tareaId: 0, usuarioId: 0})" class="btn btn-success" ng-click="vm.mostrarPanelTarea(true)">
+            <span>Nuevo</span>
+        </a>
+    </div>
+    <div class="col-md-11 text-right">
+        <input type="text" ng-model="vm.buscar" placeholder="Buscar" />
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover">
+       <thead>
+           <th></th>
+           <th>
+               Descripci&oacute;n
+           </th>
+           <th>
+               Estado
+           </th>
+           <th>
+               Asignado a
+           </th>
+           <th class="text-right">
+               Prioridad
+           </th>
+       </thead>
+       <tbody>
+           <tr ng-repeat="tarea in vm.tareas | filter:vm.buscar">
+                <td>
+                    <a ui-sref="tareas.tarea({tareaId: tarea.tareaId, usuarioId: tarea.asignadoA.usuarioId})" class="btn btn-default" ng-click="vm.mostrarPanelTarea(true)">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <a class="btn btn-default" ng-click="vm.eliminarTarea(tarea)">
+                        <span class="glyphicon glyphicon-remove"></span>
+                    </a>
+                </td>
+               <td>
+                   {{ tarea.descripcion }}
+               </td>
+               <td>
+                   {{ tarea.estado }}
+               </td>
+               <td><img ng-src="{{ tarea.asignadoA.imagenPequena }}" alt=""> {{ tarea.asignadoA.nombre }}</td>
+               <td class="text-right">
+                  <div class="col-md-12 text-center" ng-class="{'prioridad-alta':tarea.prioridad == 'ALTA', 'prioridad-media': tarea.prioridad == 'MEDIA', 'prioridad-baja' : tarea.prioridad == 'BAJA'}">
+                       {{ tarea.prioridad }}   
+                  </div>                   
+               </td>
+           </tr>                    
+       </tbody>
+        
+    </table>
+</div>
+
+<div ng-show="vm.panelTareaVisible">
+    <div class="overlay"></div>
+    <div class="ventanaModal">
+        <div ui-view class="panelInfo"></div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="col-md-12">
+    <h3>Selecciona un avatar:</h3>
+    <hr>
+    <div class="row">
+        <div ng-repeat="avatar in vm.avatars" class="avatar">
+            <a ui-sref="usuarios.usuario({usuarioId: vm.usuario.usuarioId})" >
+                <img ng-src="{{avatar.imagenPequena}}" ng-mouseover="vm.cambiarAvatar(avatar)"/>
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10 text-right">
+            <a ui-sref="usuarios.usuario({usuarioId: vm.usuario.usuarioId})" class="btn btn-danger btn-sm" ng-click="vm.cancelar(avatar);">Cerrar</a>
+        </div>
+    </div>
+</div>
